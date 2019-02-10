@@ -1,6 +1,7 @@
 package com.ing.app.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -37,6 +38,14 @@ public class CustomerControllerTest {
 			.andExpect(status().isOk())
 			.andExpect(view().name("customer"))
 			.andExpect(forwardedUrl("/WEB-INF/jsp/customer.jsp"));
+	}
+	
+	@Test
+	public void showCustomerHabitsPage_testView() throws Exception {
+		mockMvc.perform(post("/customer"))
+			.andExpect(status().isOk())
+			.andExpect(view().name("showCustomerHabits"))
+			.andExpect(forwardedUrl("/WEB-INF/jsp/showCustomerHabits.jsp"));
 	}
 	
 }
