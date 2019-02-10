@@ -2,7 +2,6 @@ package com.ing.app.controller;
 
 import java.text.ParseException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ing.app.CustomerInitialization;
-import com.ing.app.customer.classification.service.impl.ClassificationStrategyServiceContext;
 import com.ing.app.model.Customer;
 import com.ing.app.model.RequestForm;
 
@@ -19,9 +17,6 @@ import com.ing.app.model.RequestForm;
 public class CustomerController {
 		
 	final String viewName = "showCustomerHabits";
-	
-	@Autowired
-	ClassificationStrategyServiceContext cssc;
 	
 	@RequestMapping(value = "/customer", method = RequestMethod.GET)
 	public ModelAndView show() {
@@ -34,7 +29,12 @@ public class CustomerController {
 		
 		Customer cr1 = CustomerInitialization.initializeCustomer1();
 		model.addObject("crForm", crForm);
-		model.addObject("cr1", cr1);
+		if(cr1.getCustomerId() == crForm.getCustomerId()) {
+			model.addObject("isCustomerFound", "true");
+			model.addObject("cr1", cr1);
+		}else{
+			model.addObject("isCustomerFound", "false");
+		}
 
 		return model;
 	}
