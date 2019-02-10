@@ -1,0 +1,13 @@
+This is a Java/Spring Boot/Maven Project.
+
+Instruction to build and run project:
+1. Download ing-app-customers project.
+2. Open console and go to the folder with pom.xml file.
+3. Build project using Maven command: mvn install.
+4. Go to the target folder with .jar files.
+5. Run Java command: java -jar ing-app-customers-habits-0.0.1-SNAPSHOT.jar
+6. Once embedded Tomcat is started go to web browser and open: http://localhost:8080/customer 
+7. Try with Customer id=1. Only for this customer is displayed result page.
+
+REMARKS:
+Due to time limitation I was not be able to implement business logic for Customer Classification.
